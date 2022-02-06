@@ -1,11 +1,11 @@
-package utils;
+package com.testslotegrator.utils;
 
 import com.testslotegrator.gson.*;
+import com.testslotegrator.testsuites.UserTests;
 import io.restassured.http.ContentType;
 
 import java.util.Base64;
 
-import static com.testslotegrator.testsuites.UserTests.*;
 import static io.restassured.RestAssured.given;
 
 public class Utils {
@@ -14,9 +14,9 @@ public class Utils {
     public static UserResponse userResponse;
     public static CredentialsResponse credentialsResponse;
 
-    private static final GuestCredentials GET_TOKEN_TO_GUEST_REQUEST = new GuestCredentials(GRANT_TYPE_GUEST, SCOPE);
+    private static final GuestCredentials GET_TOKEN_TO_GUEST_REQUEST = new GuestCredentials(UserTests.GRANT_TYPE_GUEST, UserTests.SCOPE);
 
-    private static final CredentialsRequest GET_TOKEN_TO_USER_REQUEST = new CredentialsRequest(PASSWORD_CHANGE, GRANT_TYPE, USERNAME);
+    private static final CredentialsRequest GET_TOKEN_TO_USER_REQUEST = new CredentialsRequest(UserTests.PASSWORD_CHANGE, UserTests.GRANT_TYPE, UserTests.USERNAME);
 
     private static final String tokenEndpoint = "/v2/oauth2/token";
     private static final String playersEndpoint = "/v2/players";
@@ -68,7 +68,7 @@ public class Utils {
 
 
     private static String getAuthorization() {
-        return "Basic " + Base64.getEncoder().encodeToString(LOGIN.getBytes());
+        return "Basic " + Base64.getEncoder().encodeToString(UserTests.LOGIN.getBytes());
     }
 
     public static String getTokenForAuth(Object object) {

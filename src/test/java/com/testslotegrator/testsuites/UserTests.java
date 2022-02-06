@@ -1,13 +1,13 @@
 package com.testslotegrator.testsuites;
 
 import com.testslotegrator.Specifications;
-import com.testslotegrator.asserts.UserAsserts;
+import com.testslotegrator.UserAsserts;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.Date;
 
-import static utils.Utils.*;
+import static com.testslotegrator.utils.Utils.*;
 
 public class UserTests extends UserAsserts {
 
@@ -15,16 +15,16 @@ public class UserTests extends UserAsserts {
     private static final String URL = "http://test-api.d6.dev.devcaz.com";
 
     private static final int EXPIRES_IN = 86400;
-    public static final String USERNAME = "janedoe050116";
+    public static final String USERNAME = "janedoe050117";
     public static final String PASSWORD_CHANGE = "amFuZWRvZTEyMw==";
     private static final String PASSWORD_REPEAT = "amFuZWRvZTEyMw==";
-    private static final String EMAIL = "janedoe050116@example.com";
+    private static final String EMAIL = "janedoe050117@example.com";
     private static final String NAME = "Jane";
     private static final String SURNAME = "Doe";
     private static final String CURRENCY_CODE = "RUB";
 
 
-    private static final int ID = 9599;
+    private static final int ID = 9600;
     private static final Integer COUNTRY_ID = null;
     private static final Integer TIMEZONE_ID = null;
     private static final String GENDER = null;
@@ -68,8 +68,9 @@ public class UserTests extends UserAsserts {
 
     @Test
     public void getInfoAboutUserTest() {
-        getInfoAboutUser(ID, 200);
-        checkUser(ID, COUNTRY_ID, TIMEZONE_ID, USERNAME, EMAIL, NAME, SURNAME, GENDER, PHONE_NUMBER, BIRTHDATE, BONUSES_ALLOWED, IS_VERIFIED);
+        sendAuthRequest(PASSWORD_CHANGE, GRANT_TYPE, USERNAME, 200);
+        getInfoAboutUser(9574, 200);
+        checkUser(9574, COUNTRY_ID, TIMEZONE_ID, USERNAME, EMAIL, NAME, SURNAME, GENDER, PHONE_NUMBER, BIRTHDATE, BONUSES_ALLOWED, IS_VERIFIED);
     }
 
     @Test
