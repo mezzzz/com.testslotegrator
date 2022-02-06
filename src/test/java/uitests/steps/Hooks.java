@@ -31,7 +31,7 @@ public class Hooks {
     public void createDriver() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         driver.get(url);
     }
 

@@ -12,7 +12,6 @@ import static uitests.steps.Hooks.*;
 
 public class LoginSteps {
 
-
     @Given("user is on login page")
     public void verifyLoginPage() {
         element = (webDriverWait)
@@ -23,7 +22,6 @@ public class LoginSteps {
     public void setUsernameAndPassword() {
         element.sendKeys(login);
         driver.findElement(By.id("UserLogin_password")).sendKeys(password);
-
     }
 
     @And("click on login button")
@@ -35,6 +33,4 @@ public class LoginSteps {
     public void verifyAdminPage() {
         (webDriverWait).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[alt=\"Casino\"]")));
     }
-
-
 }

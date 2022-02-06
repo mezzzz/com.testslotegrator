@@ -1,4 +1,4 @@
-Feature: Players Table Is Displayed
+Feature: Correct Sort In Players Table By Username
 
   Scenario: check players Table Is Displayed
     Given user is on login page
