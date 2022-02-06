@@ -1,7 +1,7 @@
 package com.testslotegrator.utils;
 
 import com.testslotegrator.gson.*;
-import com.testslotegrator.testsuites.UserTests;
+import com.testslotegrator.testsuites.UserTest;
 import io.restassured.http.ContentType;
 
 import java.util.Base64;
@@ -14,9 +14,9 @@ public class Utils {
     public static UserResponse userResponse;
     public static CredentialsResponse credentialsResponse;
 
-    private static final GuestCredentials GET_TOKEN_TO_GUEST_REQUEST = new GuestCredentials(UserTests.GRANT_TYPE_GUEST, UserTests.SCOPE);
+    private static final GuestCredentials GET_TOKEN_TO_GUEST_REQUEST = new GuestCredentials(UserTest.GRANT_TYPE_GUEST, UserTest.SCOPE);
 
-    private static final CredentialsRequest GET_TOKEN_TO_USER_REQUEST = new CredentialsRequest(UserTests.PASSWORD_CHANGE, UserTests.GRANT_TYPE, UserTests.USERNAME);
+    private static final CredentialsRequest GET_TOKEN_TO_USER_REQUEST = new CredentialsRequest(UserTest.PASSWORD_CHANGE, UserTest.GRANT_TYPE, UserTest.USERNAME);
 
     private static final String tokenEndpoint = "/v2/oauth2/token";
     private static final String playersEndpoint = "/v2/players";
@@ -46,6 +46,8 @@ public class Utils {
 
     }
 
+
+
     public static void sendAuthRequest(String password, String grantType, String username, int statusCode){
         CredentialsRequest credentialsRequest = new CredentialsRequest(password, grantType, username);
         credentialsResponse = given()
@@ -59,16 +61,18 @@ public class Utils {
 
     public static void getInfoAboutUser(int userId, int statusCode){
         userResponse = given()
-                .header("Authorization", getTokenForAuth(GET_TOKEN_TO_USER_REQUEST))
+                .header("Authorization", "Bearer " + credentialsResponse.getAccessToken())
+                .log().all()
                 .when()
-                .get(playersEndpoint + userId)
+                .log().all()
+                .get(playersEndpoint + "/" + userId)
                 .then().statusCode(statusCode).log().all()
                 .extract().as(UserResponse.class);
     }
 
 
     private static String getAuthorization() {
-        return "Basic " + Base64.getEncoder().encodeToString(UserTests.LOGIN.getBytes());
+        return "Basic " + Base64.getEncoder().encodeToString(UserTest.LOGIN.getBytes());
     }
 
     public static String getTokenForAuth(Object object) {

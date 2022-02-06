@@ -9,22 +9,22 @@ import java.util.Date;
 
 import static com.testslotegrator.utils.Utils.*;
 
-public class UserTests extends UserAsserts {
+
+public class UserTest extends UserAsserts {
 
     public static final String LOGIN = "front_2d6b0a8391742f5d789d7d915755e09e:";
     private static final String URL = "http://test-api.d6.dev.devcaz.com";
 
     private static final int EXPIRES_IN = 86400;
-    public static final String USERNAME = "janedoe050117";
+    public static final String USERNAME = "janedoe050134";
     public static final String PASSWORD_CHANGE = "amFuZWRvZTEyMw==";
     private static final String PASSWORD_REPEAT = "amFuZWRvZTEyMw==";
-    private static final String EMAIL = "janedoe050117@example.com";
+    private static final String EMAIL = "janedoe050134@example.com";
     private static final String NAME = "Jane";
     private static final String SURNAME = "Doe";
     private static final String CURRENCY_CODE = "RUB";
 
 
-    private static final int ID = 9600;
     private static final Integer COUNTRY_ID = null;
     private static final Integer TIMEZONE_ID = null;
     private static final String GENDER = null;
@@ -55,7 +55,7 @@ public class UserTests extends UserAsserts {
     @Test
     public void createUserTest() {
         createUser(SURNAME, NAME, PASSWORD_CHANGE, PASSWORD_REPEAT, EMAIL, CURRENCY_CODE, USERNAME, 201);
-        checkUser(ID, COUNTRY_ID, TIMEZONE_ID, USERNAME, EMAIL, NAME, SURNAME, GENDER, PHONE_NUMBER, BIRTHDATE, BONUSES_ALLOWED, IS_VERIFIED);
+        checkUser(COUNTRY_ID, TIMEZONE_ID, USERNAME, EMAIL, NAME, SURNAME, GENDER, PHONE_NUMBER, BIRTHDATE, BONUSES_ALLOWED, IS_VERIFIED);
     }
 
 
@@ -68,13 +68,15 @@ public class UserTests extends UserAsserts {
 
     @Test
     public void getInfoAboutUserTest() {
-        sendAuthRequest(PASSWORD_CHANGE, GRANT_TYPE, USERNAME, 200);
-        getInfoAboutUser(9574, 200);
-        checkUser(9574, COUNTRY_ID, TIMEZONE_ID, USERNAME, EMAIL, NAME, SURNAME, GENDER, PHONE_NUMBER, BIRTHDATE, BONUSES_ALLOWED, IS_VERIFIED);
+        createUser(SURNAME, NAME, PASSWORD_CHANGE, PASSWORD_REPEAT, EMAIL + "1", CURRENCY_CODE, USERNAME + "1", 201);
+        sendAuthRequest(PASSWORD_CHANGE, GRANT_TYPE, USERNAME + "1", 200);
+        getInfoAboutUser(userResponse.getId(), 200);
+        checkUser(COUNTRY_ID, TIMEZONE_ID, USERNAME + "1", EMAIL + "1", NAME, SURNAME, GENDER, PHONE_NUMBER, BIRTHDATE, BONUSES_ALLOWED, IS_VERIFIED);
     }
 
     @Test
     public void getInfoAboutUser404() {
         getInfoAboutUser(0, 404);
     }
+
 }
