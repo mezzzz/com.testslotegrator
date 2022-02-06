@@ -1,47 +1,33 @@
-package uitests;
+package uitests.steps;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class BasePage {
-
-    public static WebDriver driver;
-    public static WebDriverWait webDriverWait;
-
-    public void initChrome() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
-
-    }
+import static uitests.steps.Hooks.driver;
+import static uitests.steps.Hooks.webDriverWait;
 
 
-    public void login(String login, String password) {
-        WebElement element = (webDriverWait)
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("UserLogin_username")));
-        element.sendKeys(login);
-        driver.findElement(By.id("UserLogin_password")).sendKeys(password);
-        driver.findElement(By.cssSelector("[value=\"Sign in\"]")).click();
-        (webDriverWait).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[alt=\"Casino\"]")));
+public class TableSteps {
 
-    }
-
+    @And("user click on table button")
     public void openPlayersTable() {
         driver.findElement(By.cssSelector("[class=\"fa fa-users\"]")).click();
+    }
+
+    @Then("players table is displayed")
+    public void verifyPlayersTable() {
         (webDriverWait).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[class=\"table table-hover table-striped table-bordered table-condensed\"]")));
     }
 
-    public void sortPlayersTableByUsername() {
+    @Then("user click sort button and check username order")
+    public void checkSortInUserNameColumn() {
         for (int i = 0; i < 2; i++) {
             List<WebElement> usernames = driver.findElements(By.xpath("//td/a[contains(@href,'user')][not(@class=\"btn btn-primary btn-xs\")]"));
             ArrayList<String> userNamesString = new ArrayList<>();
