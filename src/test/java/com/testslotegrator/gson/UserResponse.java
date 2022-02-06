@@ -2,13 +2,15 @@ package com.testslotegrator.gson;
 
 import com.google.gson.annotations.SerializedName;
 
-public class User{
+import java.util.Date;
+
+public class UserResponse {
 
     @SerializedName("bonuses_allowed")
     private boolean bonusesAllowed;
 
     @SerializedName("birthdate")
-    private String birthdate;
+    private Date birthdate;
 
     @SerializedName("gender")
     private String gender;
@@ -40,51 +42,51 @@ public class User{
     @SerializedName("username")
     private String username;
 
-    public boolean isBonusesAllowed(){
+    public boolean isBonusesAllowed() {
         return bonusesAllowed;
     }
 
-    public Object getBirthdate(){
+    public Date getBirthdate() {
         return birthdate;
     }
 
-    public Object getGender(){
+    public String getGender() {
         return gender;
     }
 
-    public String getSurname(){
+    public String getSurname() {
         return surname;
     }
 
-    public Object getTimezoneId(){
+    public Integer getTimezoneId() {
         return timezoneId;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public Object getPhoneNumber(){
+    public Long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public boolean isIsVerified(){
+    public boolean isIsVerified() {
         return isVerified;
     }
 
-    public Object getCountryId(){
+    public Integer getCountryId() {
         return countryId;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 }

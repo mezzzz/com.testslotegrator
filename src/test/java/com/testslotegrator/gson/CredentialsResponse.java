@@ -2,7 +2,7 @@ package com.testslotegrator.gson;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CredentialsResponse{
+public class CredentialsResponse {
     public CredentialsResponse(String accessToken, String refreshToken, String tokenType, int expiresIn) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
@@ -22,19 +22,19 @@ public class CredentialsResponse{
     @SerializedName("expires_in")
     private int expiresIn;
 
-    public String getAccessToken(){
+    public String getAccessToken() {
         return accessToken;
     }
 
-    public String getRefreshToken(){
+    public String getRefreshToken() {
         return refreshToken;
     }
 
-    public String getTokenType(){
+    public String getTokenType() {
         return tokenType;
     }
 
-    public int getExpiresIn(){
+    public int getExpiresIn() {
         return expiresIn;
     }
 }

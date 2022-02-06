@@ -13,15 +13,15 @@ public class Token {
     @SerializedName("expires_in")
     private int expiresIn;
 
-    public String getAccessToken(){
+    public String getAccessToken() {
         return accessToken;
     }
 
-    public String getTokenType(){
+    public String getTokenType() {
         return tokenType;
     }
 
-    public int getExpiresIn(){
+    public int getExpiresIn() {
         return expiresIn;
     }
 

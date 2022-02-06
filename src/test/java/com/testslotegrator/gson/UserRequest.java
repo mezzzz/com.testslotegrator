@@ -2,8 +2,8 @@ package com.testslotegrator.gson;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CreateUser{
-    public CreateUser(String surname, String name, String passwordChange, String passwordRepeat, String email, String currencyCode, String username) {
+public class UserRequest {
+    public UserRequest(String surname, String name, String passwordChange, String passwordRepeat, String email, String currencyCode, String username) {
         this.surname = surname;
         this.name = name;
         this.passwordChange = passwordChange;
@@ -34,31 +34,31 @@ public class CreateUser{
     @SerializedName("username")
     private String username;
 
-    public String getSurname(){
+    public String getSurname() {
         return surname;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public String getPasswordChange(){
+    public String getPasswordChange() {
         return passwordChange;
     }
 
-    public String getPasswordRepeat(){
+    public String getPasswordRepeat() {
         return passwordRepeat;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
 
-    public String getCurrencyCode(){
+    public String getCurrencyCode() {
         return currencyCode;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 }

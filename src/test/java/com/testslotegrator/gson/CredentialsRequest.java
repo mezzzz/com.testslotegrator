@@ -2,7 +2,7 @@ package com.testslotegrator.gson;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CredentialsRequest{
+public class CredentialsRequest {
     public CredentialsRequest(String password, String grantType, String username) {
         this.password = password;
         this.grantType = grantType;
@@ -18,15 +18,15 @@ public class CredentialsRequest{
     @SerializedName("username")
     private String username;
 
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
-    public String getGrantType(){
+    public String getGrantType() {
         return grantType;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 }

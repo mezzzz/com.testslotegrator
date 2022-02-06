@@ -10,15 +10,15 @@ public class GuestCredentials {
     @SerializedName("scope")
     private String scope;
 
-    public String getGrantType(){
+    public String getGrantType() {
         return grantType;
     }
 
-    public String getScope(){
+    public String getScope() {
         return scope;
     }
 
-    public GuestCredentials(String grantType, String scope){
+    public GuestCredentials(String grantType, String scope) {
         this.grantType = grantType;
         this.scope = scope;
     }

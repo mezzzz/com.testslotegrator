@@ -7,7 +7,6 @@ import static utils.Utils.*;
 
 public class UserAsserts {
 
-
     public void checkToken(String tokenType, int expiresIn, int accessTokenLength) {
         assertEquals("tokenType", tokenType, token.getTokenType());
         assertEquals("expiresIn", expiresIn, token.getExpiresIn());
@@ -17,18 +16,18 @@ public class UserAsserts {
 
     public void checkUser(int id, Integer countryId, Integer timezoneId, String username, String email, String name, String surname,
                           String gender, Long phoneNumber, Date birthdate, boolean isBonusesAllowed, boolean isVerified) {
-        assertEquals("id", id, user.getId());
-        assertEquals("countryId", countryId, user.getCountryId());
-        assertEquals("timezoneId", timezoneId, user.getTimezoneId());
-        assertEquals("username", username, user.getUsername());
-        assertEquals("email", email, user.getEmail());
-        assertEquals("name", name, user.getName());
-        assertEquals("surname", surname, user.getSurname());
-        assertEquals("gender", gender, user.getGender());
-        assertEquals("phoneNumber", phoneNumber, user.getPhoneNumber());
-        assertEquals("birthdate", birthdate, user.getBirthdate());
-        assertEquals("BonusesAllowed", isBonusesAllowed, user.isBonusesAllowed());
-        assertEquals("isVerified", isVerified, user.isIsVerified());
+        assertEquals("id", id, userResponse.getId());
+        assertEquals("countryId", countryId, userResponse.getCountryId());
+        assertEquals("timezoneId", timezoneId, userResponse.getTimezoneId());
+        assertEquals("username", username, userResponse.getUsername());
+        assertEquals("email", email, userResponse.getEmail());
+        assertEquals("name", name, userResponse.getName());
+        assertEquals("surname", surname, userResponse.getSurname());
+        assertEquals("gender", gender, userResponse.getGender());
+        assertEquals("phoneNumber", phoneNumber, userResponse.getPhoneNumber());
+        assertEquals("birthdate", birthdate, userResponse.getBirthdate());
+        assertEquals("BonusesAllowed", isBonusesAllowed, userResponse.isBonusesAllowed());
+        assertEquals("isVerified", isVerified, userResponse.isIsVerified());
 
     }
 
@@ -39,5 +38,4 @@ public class UserAsserts {
         assertEquals("refreshTokenLength", refreshTokenLength, credentialsResponse.getRefreshToken().length());
 
     }
-
 }
