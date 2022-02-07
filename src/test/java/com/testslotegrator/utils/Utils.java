@@ -16,8 +16,6 @@ public class Utils {
 
     private static final GuestCredentials GET_TOKEN_TO_GUEST_REQUEST = new GuestCredentials(UserTest.GRANT_TYPE_GUEST, UserTest.SCOPE);
 
-    private static final CredentialsRequest GET_TOKEN_TO_USER_REQUEST = new CredentialsRequest(UserTest.PASSWORD_CHANGE, UserTest.GRANT_TYPE, UserTest.USERNAME);
-
     private static final String tokenEndpoint = "/v2/oauth2/token";
     private static final String playersEndpoint = "/v2/players";
 
@@ -34,8 +32,8 @@ public class Utils {
     }
 
     public static void createUser(String surname, String name, String passwordChange,
-                                  String passwordRepeat, String email, String currencyCode, String username, int statusCode){
-        UserRequest userRequest = new UserRequest(surname, name,  passwordChange,  passwordRepeat, email, currencyCode, username);
+                                  String passwordRepeat, String email, String currencyCode, String username, int statusCode) {
+        UserRequest userRequest = new UserRequest(surname, name, passwordChange, passwordRepeat, email, currencyCode, username);
         userResponse = given()
                 .header("Authorization", getTokenForAuth(GET_TOKEN_TO_GUEST_REQUEST))
                 .body(userRequest)
@@ -47,8 +45,7 @@ public class Utils {
     }
 
 
-
-    public static void sendAuthRequest(String password, String grantType, String username, int statusCode){
+    public static void sendAuthRequest(String password, String grantType, String username, int statusCode) {
         CredentialsRequest credentialsRequest = new CredentialsRequest(password, grantType, username);
         credentialsResponse = given()
                 .header("Authorization", getAuthorization())
@@ -59,7 +56,7 @@ public class Utils {
                 .extract().as(CredentialsResponse.class);
     }
 
-    public static void getInfoAboutUser(int userId, int statusCode){
+    public static void getInfoAboutUser(int userId, int statusCode) {
         userResponse = given()
                 .header("Authorization", "Bearer " + credentialsResponse.getAccessToken())
                 .log().all()

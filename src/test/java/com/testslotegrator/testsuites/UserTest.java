@@ -18,10 +18,10 @@ public class UserTest extends UserAsserts {
     private static final String URL = "http://test-api.d6.dev.devcaz.com";
 
     private static final int EXPIRES_IN = 86400;
-    public static final String USERNAME = "janedoe050142";
+    public static final String USERNAME = "janedoe050143";
     public static final String PASSWORD_CHANGE = "amFuZWRvZTEyMw==";
     private static final String PASSWORD_REPEAT = "amFuZWRvZTEyMw==";
-    private static final String EMAIL = "janedoe050142@example.com";
+    private static final String EMAIL = "janedoe050143@example.com";
     private static final String NAME = "Jane";
     private static final String SURNAME = "Doe";
     private static final String CURRENCY_CODE = "RUB";
@@ -63,7 +63,7 @@ public class UserTest extends UserAsserts {
     @Test
     public void authUserTest() {
         createUser(SURNAME, NAME, PASSWORD_CHANGE, PASSWORD_REPEAT, EMAIL + "2", CURRENCY_CODE, USERNAME + "2", 201);
-        sendAuthRequest(PASSWORD_CHANGE, GRANT_TYPE, USERNAME+"2", 200);
+        sendAuthRequest(PASSWORD_CHANGE, GRANT_TYPE, USERNAME + "2", 200);
         checkIsAuth(TOKEN_TYPE, EXPIRES_IN, 627, 1222);
     }
 
@@ -80,6 +80,4 @@ public class UserTest extends UserAsserts {
     public void getInfoAboutUser404() {
         getInfoAboutUser(0, 404);
     }
-
-
 }

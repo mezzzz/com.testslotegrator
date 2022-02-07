@@ -6,31 +6,32 @@ import junit.framework.TestCase;
 import java.util.Date;
 
 import static com.testslotegrator.utils.Utils.*;
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class UserAsserts {
 
     public void checkToken(String tokenType, int expiresIn, int accessTokenLength) {
-        TestCase.assertEquals("tokenType", tokenType, token.getTokenType());
-        TestCase.assertEquals("expiresIn", expiresIn, token.getExpiresIn());
-        TestCase.assertEquals("accessTokenLength", accessTokenLength, token.getAccessToken().length());
+        assertEquals("tokenType", tokenType, token.getTokenType());
+        assertEquals("expiresIn", expiresIn, token.getExpiresIn());
+        assertEquals("accessTokenLength", accessTokenLength, token.getAccessToken().length());
 
     }
 
     public void checkUser(Integer countryId, Integer timezoneId, String username, String email, String name, String surname,
                           String gender, Long phoneNumber, Date birthdate, boolean isBonusesAllowed, boolean isVerified) {
-        TestCase.assertTrue(userResponse.getId() > 0);
-        TestCase.assertEquals("countryId", countryId, userResponse.getCountryId());
-        TestCase.assertEquals("timezoneId", timezoneId, userResponse.getTimezoneId());
-        TestCase.assertEquals("username", username, userResponse.getUsername());
-        TestCase.assertEquals("email", email, userResponse.getEmail());
-        TestCase.assertEquals("name", name, userResponse.getName());
-        TestCase.assertEquals("surname", surname, userResponse.getSurname());
-        TestCase.assertEquals("gender", gender, userResponse.getGender());
-        TestCase.assertEquals("phoneNumber", phoneNumber, userResponse.getPhoneNumber());
-        TestCase.assertEquals("birthdate", birthdate, userResponse.getBirthdate());
-        TestCase.assertEquals("BonusesAllowed", isBonusesAllowed, userResponse.isBonusesAllowed());
-        TestCase.assertEquals("isVerified", isVerified, userResponse.isIsVerified());
+        assertTrue(userResponse.getId() > 0);
+        assertEquals("countryId", countryId, userResponse.getCountryId());
+        assertEquals("timezoneId", timezoneId, userResponse.getTimezoneId());
+        assertEquals("username", username, userResponse.getUsername());
+        assertEquals("email", email, userResponse.getEmail());
+        assertEquals("name", name, userResponse.getName());
+        assertEquals("surname", surname, userResponse.getSurname());
+        assertEquals("gender", gender, userResponse.getGender());
+        assertEquals("phoneNumber", phoneNumber, userResponse.getPhoneNumber());
+        assertEquals("birthdate", birthdate, userResponse.getBirthdate());
+        assertEquals("BonusesAllowed", isBonusesAllowed, userResponse.isBonusesAllowed());
+        assertEquals("isVerified", isVerified, userResponse.isIsVerified());
 
     }
 

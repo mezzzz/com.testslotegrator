@@ -14,7 +14,6 @@ public class Specifications {
                 .build();
     }
 
-
     public static void installSpec(RequestSpecification request) {
         RestAssured.requestSpecification = request;
     }
