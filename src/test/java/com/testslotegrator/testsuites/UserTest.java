@@ -18,10 +18,10 @@ public class UserTest extends UserAsserts {
     private static final String URL = "http://test-api.d6.dev.devcaz.com";
 
     private static final int EXPIRES_IN = 86400;
-    public static final String USERNAME = "janedoe050143";
+    public static final String USERNAME = "janedoe050146";
     public static final String PASSWORD_CHANGE = "amFuZWRvZTEyMw==";
     private static final String PASSWORD_REPEAT = "amFuZWRvZTEyMw==";
-    private static final String EMAIL = "janedoe050143@example.com";
+    private static final String EMAIL = "janedoe050146@example.com";
     private static final String NAME = "Jane";
     private static final String SURNAME = "Doe";
     private static final String CURRENCY_CODE = "RUB";
